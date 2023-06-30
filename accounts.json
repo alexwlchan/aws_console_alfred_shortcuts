@@ -1,0 +1,92 @@
+[
+  {
+    "id": "760097843905",
+    "role_names": [
+      "platform-read_only",
+      "platform-developer",
+      "platform-admin"
+    ],
+    "color": "red"
+  },
+  {
+    "id": "756629837203",
+    "role_names": [
+      "catalogue-read_only",
+      "catalogue-developer",
+      "catalogue-admin"
+    ],
+    "color": "red"
+  },
+  {
+    "id": "130871440101",
+    "role_names": [
+      "experience-read_only",
+      "experience-developer",
+      "experience-admin"
+    ],
+    "color": "red"
+  },
+  {
+    "id": "269807742353",
+    "role_names": [
+      "reporting-read_only",
+      "reporting-developer",
+      "reporting-admin"
+    ],
+    "color": "red"
+  },
+  {
+    "id": "404315009621",
+    "role_names": [
+      "digitisation-read_only",
+      "digitisation-developer",
+      "digitisation-admin"
+    ],
+    "color": "orange"
+  },
+  {
+    "id": "299497370133",
+    "role_names": [
+      "workflow-read_only",
+      "workflow-developer",
+      "workflow-admin"
+    ],
+    "color": "yellow"
+  },
+  {
+    "id": "975596993436",
+    "role_names": [
+      "storage-read_only",
+      "storage-developer",
+      "storage-admin"
+    ],
+    "color": "green"
+  },
+  {
+    "id": "770700576653",
+    "role_names": [
+      "identity-read_only",
+      "identity-developer",
+      "identity-admin"
+    ],
+    "color": "blue"
+  },
+  {
+    "id": "653428163053",
+    "role_names": [
+      "digirati-read_only",
+      "digirati-developer",
+      "digirati-admin"
+    ],
+    "color": "blue"
+  },
+  {
+    "id": "964279923020",
+    "role_names": [
+      "data-read_only",
+      "data-developer",
+      "data-admin"
+    ],
+    "color": "red"
+  }
+]

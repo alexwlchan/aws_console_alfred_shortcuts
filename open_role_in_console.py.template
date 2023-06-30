@@ -1,0 +1,78 @@
+#!/usr/bin/env python3
+
+import subprocess
+import sys
+import time
+import webbrowser
+
+from urllib.parse import quote_plus
+
+
+def get_front_url():
+    return subprocess.check_output([
+        "osascript", "-e",
+        """
+        tell application "Safari" to get URL of document 1
+        """
+    ]).decode("utf8").strip()
+
+
+def create_url(account_id, role_name, display_name, redirect_uri, color):
+    url = (
+        "https://signin.aws.amazon.com/switchrole?"
+        "account={account_id}&"
+        "roleName={role_name}&"
+        "displayName={display_name}&"
+        "redirect_uri={redirect_uri}&"
+        "color={color}"
+    ).format(
+        account_id=account_id,
+        role_name=role_name,
+        display_name=quote_plus(display_name),
+        redirect_uri=quote_plus(redirect_uri),
+        color=color,
+    )
+
+    return url
+
+
+if __name__ == "__main__":
+    role_name = {ROLE_NAME}
+    account_id = {ACCOUNT_ID}
+    color = {COLOR}
+    display_name = {DISPLAY_NAME}
+
+    redirect_uri = get_front_url()
+
+    url = create_url(
+        role_name=role_name,
+        account_id=account_id,
+        color=color,
+        redirect_uri=redirect_uri,
+        display_name=display_name,
+    )
+    webbrowser.open(url)
+
+    for _ in range(100):
+        front_url = get_front_url()
+
+        if front_url == url:
+            subprocess.check_call(
+                [
+                    "osascript",
+                    "-e",
+                    """
+                tell application "Safari"
+                    tell document 1 to repeat
+                        do JavaScript "document.readyState"
+                        if the result = "complete" then exit repeat
+                        delay 0.1
+                    end repeat
+                    do JavaScript "document.getElementById('input_switchrole_button').click();" in document 1
+                end tell
+                """,
+                ]
+            )
+            sys.exit(0)
+
+        time.sleep(0.1)
